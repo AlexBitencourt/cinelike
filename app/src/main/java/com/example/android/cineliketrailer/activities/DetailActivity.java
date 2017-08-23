@@ -185,16 +185,16 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     }
     public boolean isFavorite() {
         boolean isFavorite = false;
-        Cursor movieCursor = getApplicationContext().getContentResolver().query(
+        Cursor movieFavoriteCursor = getApplicationContext().getContentResolver().query(
                 MovieContract.FavoriteEntry.CONTENT_URI,
                 new String[]{MovieContract.FavoriteEntry.COLUMN_FAVORITE_TITLE},
                 MovieContract.FavoriteEntry.COLUMN_FAVORITE_MOVIE_ID + " = " + movieId,
                 null,
                 null);
 
-        while (movieCursor.moveToNext()) {
-            if(currentMovie.getTitle().equals(movieCursor.getString(
-                    movieCursor.getColumnIndex(MovieContract.FavoriteEntry.COLUMN_FAVORITE_TITLE)))){
+        while (movieFavoriteCursor.moveToNext()) {
+            if(currentMovie.getTitle().equals(movieFavoriteCursor.getString(
+                    movieFavoriteCursor.getColumnIndex(MovieContract.FavoriteEntry.COLUMN_FAVORITE_TITLE)))){
                 isFavorite = true;
             }
         } return isFavorite;
