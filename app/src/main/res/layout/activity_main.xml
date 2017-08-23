@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridView
+            android:id="@+id/gridview_movie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="auto_fit"
+            android:columnWidth="150dp"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center" />
+
+        <!-- A visualização vazia só é visível quando a lista não possui itens. -->
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <!-- Loading indicator is only shown before the first load -->
+        <ProgressBar
+            android:id="@+id/loading_indicator"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_above="@+id/empty_view" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
