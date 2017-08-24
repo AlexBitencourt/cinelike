@@ -64,7 +64,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     RecyclerView mRecyclerReviews;
     private String mMovieStr;
     private FloatingActionButton mFab;
-    //MovieDbHelper movieDbHelper;
+    MovieDbHelper movieDbHelper;
     Long movieId;
 
     MovieDetails currentMovie;
@@ -172,7 +172,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
             public void onClick(View view) {
                 if (isFavorite()) {
                     MovieDbHelper movieDbHelper = new MovieDbHelper(getApplication());
-                    movieDbHelper.deleteFavorite();
+                    deleteFavorite();
                     mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                     Toast.makeText(getApplicationContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
                 } else {
@@ -320,5 +320,19 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
             Log.e(LOG_TAG, "Error newUri insert", e);
         }
     }
+
+    private void deleteFavorite() {
+        Uri uri = MovieContract.FavoriteEntry.CONTENT_URI;
+        int currentMovieId = Integer.valueOf(currentMovie.getId());
+        if (uri != null) {
+            int rowsDeleted = getContentResolver().delete(MovieContract.FavoriteEntry
+                    .buildFavoriteUri(currentMovieId), null, null);
+            if (rowsDeleted == 0) {
+                Toast.makeText(this, "Erro delete", Toast.LENGTH_SHORT).show();
+            }
+        }
+        finish();
+    }
+
 
 }

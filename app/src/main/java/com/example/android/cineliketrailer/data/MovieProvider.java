@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.util.Log;
+import android.util.StringBuilderPrinter;
 
 /**
  * Created by alexbitencourt on 19/06/17.
@@ -196,6 +197,32 @@ public class MovieProvider extends ContentProvider {
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        final int match = sUriMatcher.match(uri);
+        int rowsDeleted;
+
+        switch (match){
+            case FAVORITE:
+                rowsDeleted = db.delete(MovieContract.FavoriteEntry.TABLE_NAME, selection, selectionArgs);
+                break;
+            case FAVORITE_SINGLE:
+                selection = MovieContract.FavoriteEntry._ID+"=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                rowsDeleted = db.delete(MovieContract.FavoriteEntry.TABLE_NAME, selection, selectionArgs);
+                break;
+            default:
+                throw new IllegalArgumentException("Execution error in delete method.");
+        }
+        if (rowsDeleted != 0){
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+        return rowsDeleted;
+    }
+
+
+    /*
+    @Override
+    public int delete(Uri uri, String selection, String[] selectionArgs) {
+        final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         int rowsDeleted;
 
         if (null == selection) selection = "1";
@@ -206,7 +233,7 @@ public class MovieProvider extends ContentProvider {
         }
 
         return rowsDeleted;
-    }
+    } */
 
 
     @Override
