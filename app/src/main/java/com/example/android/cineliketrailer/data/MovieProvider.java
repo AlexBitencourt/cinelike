@@ -221,7 +221,7 @@ public class MovieProvider extends ContentProvider {
 
     /*
     @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
+    public int deleteFavorite(Uri uri, String selection, String[] selectionArgs) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         int rowsDeleted;
 
