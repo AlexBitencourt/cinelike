@@ -64,7 +64,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     RecyclerView mRecyclerReviews;
     private String mMovieStr;
     private FloatingActionButton mFab;
-    MovieDbHelper movieDbHelper;
     Long movieId;
 
     MovieDetails currentMovie;
@@ -171,7 +170,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
             @Override
             public void onClick(View view) {
                 if (isFavorite()) {
-                    MovieDbHelper movieDbHelper = new MovieDbHelper(getApplication());
                     deleteFavorite();
                     mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                     Toast.makeText(getApplicationContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();

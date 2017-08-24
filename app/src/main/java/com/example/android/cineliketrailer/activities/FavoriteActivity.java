@@ -80,7 +80,7 @@ public class FavoriteActivity extends AppCompatActivity implements android.suppo
     @Override
     public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         return new android.support.v4.content.CursorLoader(this,
-                MovieContract.FavoriteEntry.buildFavoriteUri(id),
+                MovieContract.FavoriteEntry.CONTENT_URI,
                 DETAIL_COLUMNS,
                 null,
                 null,
