@@ -172,7 +172,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
             public void onClick(View view) {
                 if (isFavorite()) {
                     MovieDbHelper movieDbHelper = new MovieDbHelper(getApplication());
-                    movieDbHelper.deleteFavorite();
+                    deleteFavorite();
                     mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                     Toast.makeText(getApplicationContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
                 } else {
@@ -323,7 +323,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
 
 
 
-    /*
+
     private void deleteFavorite() {
         Uri uri = MovieContract.FavoriteEntry.CONTENT_URI;
         int currentMovieId = Integer.valueOf(currentMovie.getId());
@@ -335,7 +335,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
             }
         }
         finish();
-    } */
+    }
 
 
 }

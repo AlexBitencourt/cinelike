@@ -88,6 +88,7 @@ public class MovieDbHelper extends SQLiteOpenHelper {
      */
 
 
+    /*
     public void deleteFavorite() {
         long movieId = 0;
         String selection = FavoriteEntry.COLUMN_FAVORITE_MOVIE_ID + " = ?";
@@ -102,5 +103,5 @@ public class MovieDbHelper extends SQLiteOpenHelper {
         } finally {
             db.endTransaction();
         }
-    }
+    } */
 }
