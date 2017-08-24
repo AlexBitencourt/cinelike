@@ -205,7 +205,7 @@ public class MovieProvider extends ContentProvider {
                 rowsDeleted = db.delete(MovieContract.FavoriteEntry.TABLE_NAME, selection, selectionArgs);
                 break;
             case FAVORITE_SINGLE:
-                selection = MovieContract.FavoriteEntry._ID+"=?";
+                selection = MovieContract.FavoriteEntry.COLUMN_FAVORITE_MOVIE_ID+"=?";
                 selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                 rowsDeleted = db.delete(MovieContract.FavoriteEntry.TABLE_NAME, selection, selectionArgs);
                 break;
