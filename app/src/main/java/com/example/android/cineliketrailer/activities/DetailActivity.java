@@ -65,8 +65,8 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     private String mMovieStr;
     private FloatingActionButton mFab;
     Long movieId;
-
     MovieDetails currentMovie;
+    boolean statusDelete = false;
 
     ArrayList<MovieTrailer> movieTrailer = new ArrayList<>();
     ArrayList<MovieReview> movieReviews = new ArrayList<>();
@@ -82,6 +82,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
             MovieContract.MoviesEntry.COLUMN_VOTE_AVERAGE,
             MovieContract.MoviesEntry.COLUMN_LANGUAGE,
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,23 +166,43 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         updateReviewMovies(currentMovie.getId());
 
 
+        /*
+         * Button Favorite
+         */
         mFab = (FloatingActionButton) findViewById(R.id.button_favorite);
+
+        if(isFavorite()  ) {
+            mFab.setImageResource(R.drawable.ic_favorite_white_24dp);
+        } else {
+            mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        }
+
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isFavorite()) {
-                    deleteFavorite();
-                    mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-                    Toast.makeText(getApplicationContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
-                } else {
+                if (!isFavorite()) {
                     saveFavorite();
                     mFab.setImageResource(R.drawable.ic_favorite_white_24dp);
                     Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    deleteFavorite();
+                    mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                    Toast.makeText(getApplicationContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
+                    statusDelete = true;
                 }
             }
         });
-
     }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        if(statusDelete) {
+            deleteFavorite();
+        }
+    }
+
+
     public boolean isFavorite() {
         boolean isFavorite = false;
         Cursor favoriteCursor = getApplicationContext().getContentResolver().query(
@@ -197,9 +218,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
                 isFavorite = true;
             }
         } return isFavorite;
-
     }
-
 
     private void updateTrailerMovies(String id) {
         FetchTrailersTask getTask = new FetchTrailersTask(this);
@@ -289,6 +308,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
 
     }
 
+
     public void saveFavorite() {
 
         String id = currentMovie.getId();
@@ -320,8 +340,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     }
 
 
-
-
     private void deleteFavorite() {
         Uri uri = MovieContract.FavoriteEntry.CONTENT_URI;
         int currentMovieId = Integer.valueOf(currentMovie.getId());
@@ -334,6 +352,5 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         }
         finish();
     }
-
 
 }

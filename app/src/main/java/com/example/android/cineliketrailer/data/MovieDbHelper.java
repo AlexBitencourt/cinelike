@@ -86,8 +86,6 @@ public class MovieDbHelper extends SQLiteOpenHelper {
     /*
      * Método delete filmes Favoritos
      */
-
-
     /*
     public void deleteFavorite() {
         long movieId = 0;

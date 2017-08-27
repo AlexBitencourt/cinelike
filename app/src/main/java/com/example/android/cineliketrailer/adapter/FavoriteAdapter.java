@@ -35,8 +35,6 @@ public class FavoriteAdapter extends CursorAdapter {
     private static final String LOG_TAG = FavoriteAdapter.class.getSimpleName();
     private Context mContext;
 
-    private FloatingActionButton mFab;
-
     public FavoriteAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
         this.mContext = context;
@@ -49,8 +47,6 @@ public class FavoriteAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, final Context context, final Cursor cursor) {
-
-        mFab = (FloatingActionButton) view.findViewById(R.id.button_favorite);
 
         TextView titleText = (TextView) view.findViewById(R.id.title_textview);
         int title = cursor.getColumnIndex(MovieContract.FavoriteEntry.COLUMN_FAVORITE_TITLE);

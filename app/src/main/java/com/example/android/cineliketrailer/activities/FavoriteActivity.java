@@ -21,6 +21,8 @@ import com.example.android.cineliketrailer.model.MovieDetails;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Unbinder;
+
 /**
  * Created by alexbitencourt on 09/08/17.
  */
