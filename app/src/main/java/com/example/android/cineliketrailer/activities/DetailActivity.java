@@ -158,13 +158,13 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         mRecyclerTrailers.setHasFixedSize(true);
         mRecyclerReviews.setNestedScrollingEnabled(true);
         mRecyclerReviews.setHasFixedSize(true);
+        mRecyclerTrailers.setFocusable(false);
 
         /*
          * Update Task Trailers e Reviews
          */
         updateTrailerMovies(currentMovie.getId());
         updateReviewMovies(currentMovie.getId());
-
 
         /*
          * Button Favorite
@@ -185,7 +185,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
                     mFab.setImageResource(R.drawable.ic_favorite_white_24dp);
                     Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    deleteFavorite();
                     mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                     Toast.makeText(getApplicationContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
                     statusDelete = true;
