@@ -198,6 +198,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         super.onPause();
         if(statusDelete) {
             deleteFavorite();
+
         }
     }
 
