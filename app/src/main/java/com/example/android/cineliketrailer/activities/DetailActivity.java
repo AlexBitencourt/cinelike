@@ -356,7 +356,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
             int rowsDeleted = getContentResolver().delete(MovieContract.FavoriteEntry
                     .buildFavoriteUri(currentMovieId), null, null);
             if (rowsDeleted == 0) {
-                Toast.makeText(this, "Erro delete", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Erro delete", Toast.LENGTH_SHORT).show();
             }
         }
         finish();
