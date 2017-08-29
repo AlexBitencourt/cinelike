@@ -7,10 +7,12 @@ import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -66,6 +68,8 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     private FloatingActionButton mFab;
     Long movieId;
     MovieDetails currentMovie;
+
+    boolean isFavorite = false;
     boolean statusDelete = false;
 
     ArrayList<MovieTrailer> movieTrailer = new ArrayList<>();
@@ -184,9 +188,12 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
                     saveFavorite();
                     mFab.setImageResource(R.drawable.ic_favorite_white_24dp);
                     Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_SHORT).show();
+                    isFavorite = true;
+                    statusDelete = false;
                 } else {
                     mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                     Toast.makeText(getApplicationContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
+                    isFavorite = false;
                     statusDelete = true;
                 }
             }
@@ -198,13 +205,12 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         super.onPause();
         if(statusDelete) {
             deleteFavorite();
-
-        }
+        } //finish();
+       // statusDelete = false;
     }
 
-
     public boolean isFavorite() {
-        boolean isFavorite = false;
+        //boolean isFavorite = false;
         Cursor favoriteCursor = getApplicationContext().getContentResolver().query(
                 MovieContract.FavoriteEntry.CONTENT_URI,
                 new String[]{MovieContract.FavoriteEntry.COLUMN_FAVORITE_TITLE},
