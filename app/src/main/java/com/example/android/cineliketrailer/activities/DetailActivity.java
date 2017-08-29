@@ -170,6 +170,8 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         updateTrailerMovies(currentMovie.getId());
         updateReviewMovies(currentMovie.getId());
 
+        isFavorite = isFavorite();
+
         /*
          * Button Favorite
          */
@@ -184,8 +186,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isFavorite()) {
-                    saveFavorite();
+                if (!isFavorite) {
                     mFab.setImageResource(R.drawable.ic_favorite_white_24dp);
                     Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_SHORT).show();
                     isFavorite = true;
@@ -205,9 +206,11 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         super.onPause();
         if(statusDelete) {
             deleteFavorite();
-        } //finish();
-       // statusDelete = false;
+        } else{
+            saveFavorite();
+        }
     }
+
 
     public boolean isFavorite() {
         //boolean isFavorite = false;
