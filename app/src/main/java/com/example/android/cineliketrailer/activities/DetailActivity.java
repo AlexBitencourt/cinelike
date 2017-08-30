@@ -70,7 +70,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     MovieDetails currentMovie;
 
     boolean isFavorite = false;
-    boolean statusDelete = false;
+    boolean statusDeletee = false;
 
     ArrayList<MovieTrailer> movieTrailer = new ArrayList<>();
     ArrayList<MovieReview> movieReviews = new ArrayList<>();
