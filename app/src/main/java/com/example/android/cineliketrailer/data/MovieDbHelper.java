@@ -54,9 +54,7 @@ public class MovieDbHelper extends SQLiteOpenHelper {
                 MoviesEntry.COLUMN_BACKDROP_PATH + " TEXT NOT NULL, " +
                 MoviesEntry.COLUMN_VOTE_AVERAGE + " TEXT NOT NULL, " +
                 MoviesEntry.COLUMN_LANGUAGE + " TEXT NOT NULL " +
-                //MoviesEntry.COLUMN_FAVORITE + " TEXT NOT NULL " +
         " );";
-
 
         final String SQL_CREATE_MOVIES_TABLE_FAVORITE = "CREATE TABLE " + FavoriteEntry.TABLE_NAME + " (" +
                 FavoriteEntry._ID + " INTERGER PRIMARY KEY," +
@@ -67,9 +65,9 @@ public class MovieDbHelper extends SQLiteOpenHelper {
                 FavoriteEntry.COLUMN_FAVORITE_POSTER_PATH + " TEXT NOT NULL, " +
                 FavoriteEntry.COLUMN_FAVORITE_BACKDROP_PATH + " TEXT NOT NULL, " +
                 FavoriteEntry.COLUMN_FAVORITE_VOTE_AVERAGE + " TEXT NOT NULL, " +
-                FavoriteEntry.COLUMN_FAVORITE_LANGUAGE + " TEXT NOT NULL " +
+                FavoriteEntry.COLUMN_FAVORITE_LANGUAGE + " TEXT NOT NULL, " +
+                "unique (" + FavoriteEntry.COLUMN_FAVORITE_MOVIE_ID + ") on conflict replace" +
                 " );";
-
 
         sqLiteDatabase.execSQL(SQL_CREATE_MOVIES_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_MOVIES_TABLE_FAVORITE);
