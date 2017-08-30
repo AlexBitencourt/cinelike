@@ -70,7 +70,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     MovieDetails currentMovie;
 
     boolean isFavorite = false;
-    boolean statusDeletee = false;
+    boolean statusDelete = false;
 
     ArrayList<MovieTrailer> movieTrailer = new ArrayList<>();
     ArrayList<MovieReview> movieReviews = new ArrayList<>();
@@ -233,7 +233,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         FetchTrailersTask getTask = new FetchTrailersTask(this);
         getTask.execute(id);
     }
-    
+
     private void updateReviewMovies(String id) {
         FetchReviewTask getTask = new FetchReviewTask(this);
         getTask.execute(id);
