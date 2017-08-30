@@ -66,7 +66,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     private FloatingActionButton mFab;
     Long movieId;
     MovieDetails currentMovie;
-    boolean statusDelete = false;
+    boolean statusDeletee = false;
 
     ArrayList<MovieTrailer> movieTrailer = new ArrayList<>();
     ArrayList<MovieReview> movieReviews = new ArrayList<>();
