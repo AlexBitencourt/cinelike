@@ -1,18 +1,13 @@
 package com.example.android.cineliketrailer.activities;
 
-import android.app.Application;
 import android.app.LoaderManager;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -27,10 +22,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import com.example.android.cineliketrailer.adapter.ReviewAdapter;
 import com.example.android.cineliketrailer.adapter.TrailerAdapter;
-import com.example.android.cineliketrailer.data.MovieDbHelper;
 import com.example.android.cineliketrailer.model.MovieDetails;
 import com.example.android.cineliketrailer.model.MovieReview;
 import com.example.android.cineliketrailer.model.MovieTrailer;
@@ -47,9 +42,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
-
-import butterknife.BindView;
 
 /**
  * Created by alexbitencourt on 04/05/17.
@@ -71,6 +63,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
 
     boolean isFavorite = false;
     boolean statusDelete = false;
+    boolean statusSave = false;
 
     ArrayList<MovieTrailer> movieTrailer = new ArrayList<>();
     ArrayList<MovieReview> movieReviews = new ArrayList<>();
@@ -108,6 +101,12 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         Intent intent = this.getIntent();
         currentMovie = intent.getParcelableExtra(MovieDetails.EXTRA_MOVIE_DETAILS);
         currentMovie.getId();
+
+
+        /*
+         @BindView(R.id.list_item_author)
+        TextView reviewAuthor;
+         */
 
         /*
          * List Details
@@ -184,11 +183,13 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
                     Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_SHORT).show();
                     isFavorite = true;
                     statusDelete = false;
+                    statusSave = true;
                 } else {
                     mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                     Toast.makeText(getApplicationContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
                     isFavorite = false;
                     statusDelete = true;
+                    statusSave = false;
                 }
             }
         });
@@ -206,7 +207,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         super.onPause();
         if(statusDelete) {
             deleteFavorite();
-        } else{
+        } else if(statusSave){
             saveFavorite();
         }
     }

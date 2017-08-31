@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
 
     private TextView mEmptyStateTextView;
     private View loadingIndicator;
-    private PreferenceManager preferenceScreen;
+    //private PreferenceManager preferenceScreen;
 
     CustomMovieAdapter customMovieAdapter;
     ArrayList<MovieDetails> movieDetalsArrayList = new ArrayList<>();
