@@ -54,7 +54,7 @@ public class MovieDbHelper extends SQLiteOpenHelper {
                 MoviesEntry.COLUMN_BACKDROP_PATH + " TEXT NOT NULL, " +
                 MoviesEntry.COLUMN_VOTE_AVERAGE + " TEXT NOT NULL, " +
                 MoviesEntry.COLUMN_LANGUAGE + " TEXT NOT NULL " +
-        " );";
+                " );";
 
         final String SQL_CREATE_MOVIES_TABLE_FAVORITE = "CREATE TABLE " + FavoriteEntry.TABLE_NAME + " (" +
                 FavoriteEntry._ID + " INTERGER PRIMARY KEY," +
