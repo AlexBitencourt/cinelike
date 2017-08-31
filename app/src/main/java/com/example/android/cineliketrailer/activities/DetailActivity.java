@@ -176,13 +176,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
          * Button Favorite
          */
         mFab = (FloatingActionButton) findViewById(R.id.button_favorite);
-
-        if(isFavorite()  ) {
-            mFab.setImageResource(R.drawable.ic_favorite_white_24dp);
-        } else {
-            mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-        }
-
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,6 +192,13 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
                 }
             }
         });
+
+        if(isFavorite()) {
+            mFab.setImageResource(R.drawable.ic_favorite_white_24dp);
+        } else {
+            mFab.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        }
+
     }
 
     @Override
@@ -210,7 +210,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
             saveFavorite();
         }
     }
-
 
     public boolean isFavorite() {
         //boolean isFavorite = false;
