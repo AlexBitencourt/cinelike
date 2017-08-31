@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
 
     private TextView mEmptyStateTextView;
     private View loadingIndicator;
-    //private PreferenceManager preferenceScreen;
 
     CustomMovieAdapter customMovieAdapter;
     ArrayList<MovieDetails> movieDetalsArrayList = new ArrayList<>();
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
             return true;
         }
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_favorites) {
             startActivityForResult(new Intent(this, FavoriteActivity.class), UP_CODE);
             return true;
@@ -154,5 +152,4 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
         this.movieDetalsArrayList = (ArrayList<MovieDetails>) output;
         customMovieAdapter.updateData(this.movieDetalsArrayList);
     }
-
 }

@@ -28,13 +28,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private Context context;
 
 
-    //@BindView(R.id.list_item_author)
-    // TextView reviewAuthor;
-
-    // @BindView(R.id.list_item_content)
-    //  TextView reviewContent;
-
-
     public ReviewAdapter(List<MovieReview> reviews, Context context) {
         this.reviews = reviews;
         this.context = context;

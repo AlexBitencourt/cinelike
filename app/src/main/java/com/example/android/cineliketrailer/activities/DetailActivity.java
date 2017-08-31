@@ -8,6 +8,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -101,12 +102,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         Intent intent = this.getIntent();
         currentMovie = intent.getParcelableExtra(MovieDetails.EXTRA_MOVIE_DETAILS);
         currentMovie.getId();
-
-
-        /*
-         @BindView(R.id.list_item_author)
-        TextView reviewAuthor;
-         */
 
         /*
          * List Details
@@ -213,7 +208,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     }
 
     public boolean isFavorite() {
-        //boolean isFavorite = false;
         Cursor favoriteCursor = getApplicationContext().getContentResolver().query(
                 MovieContract.FavoriteEntry.CONTENT_URI,
                 new String[]{MovieContract.FavoriteEntry.COLUMN_FAVORITE_TITLE},
