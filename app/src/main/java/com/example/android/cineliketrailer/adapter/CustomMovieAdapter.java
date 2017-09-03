@@ -22,7 +22,7 @@ public class CustomMovieAdapter extends ArrayAdapter<MovieDetails> {
 
     private final String LOG_TAG = CustomMovieAdapter.class.getSimpleName();
 
-    List<MovieDetails> movieDetails;
+    private List<MovieDetails> movieDetails;
 
     /**
      * Contrutor do novo {@link CustomMovieAdapter}
@@ -69,6 +69,12 @@ public class CustomMovieAdapter extends ArrayAdapter<MovieDetails> {
 
         TextView titleMovie = (TextView) listItemView.findViewById(R.id.title_textview);
         titleMovie.setText(currentMovie.getTitle());
+
+        TextView rateMovie = (TextView) listItemView.findViewById(R.id.release_date_details);
+        rateMovie.setText(currentMovie.getRelease_date().substring(0, 4));
+
+        TextView voteMovie = (TextView) listItemView.findViewById(R.id.vote_details);
+        voteMovie.setText(currentMovie.getVote());
 
         ImageView posterMovie = (ImageView) listItemView.findViewById(R.id.movie_poster);
         Picasso.with(getContext()).load(currentMovie.getPosterUrl()).into(posterMovie);

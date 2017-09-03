@@ -21,6 +21,7 @@
         </activity>
         <activity
             android:name="com.example.android.cineliketrailer.activities.DetailActivity"
+            android:label=""
             android:parentActivityName="com.example.android.cineliketrailer.activities.MainActivity">
 
             <meta-data

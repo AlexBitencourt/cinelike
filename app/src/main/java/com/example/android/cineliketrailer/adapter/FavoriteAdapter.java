@@ -53,6 +53,16 @@ public class FavoriteAdapter extends CursorAdapter {
         String titleMovie = cursor.getString(title);
         titleText.setText(titleMovie);
 
+        TextView rateFavorite = (TextView) view.findViewById(R.id.release_date_details);
+        int rate = cursor.getColumnIndex(MovieContract.FavoriteEntry.COLUMN_FAVORITE_RELEASE_DATE);
+        String rateMovie = cursor.getString(rate).substring(0, 4);
+        rateFavorite.setText(rateMovie);
+
+        TextView voteFavorite = (TextView) view.findViewById(R.id.vote_details);
+        int vote = cursor.getColumnIndex(MovieContract.FavoriteEntry.COLUMN_FAVORITE_VOTE_AVERAGE);
+        String voteMovie = cursor.getString(vote);
+        voteFavorite.setText(voteMovie);
+
         ImageView imageMovie = (ImageView) view.findViewById(R.id.movie_poster);
         final int posterIndex = cursor.getColumnIndex(MovieContract.FavoriteEntry.COLUMN_FAVORITE_POSTER_PATH);
         final String posterMovie = cursor.getString(posterIndex);

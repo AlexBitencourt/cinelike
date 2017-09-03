@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
     private TextView mEmptyStateTextView;
     private View loadingIndicator;
 
-    CustomMovieAdapter customMovieAdapter;
-    ArrayList<MovieDetails> movieDetalsArrayList = new ArrayList<>();
+    private CustomMovieAdapter customMovieAdapter;
+    private ArrayList<MovieDetails> movieDetalsArrayList = new ArrayList<>();
 
-    final int UP_CODE = 1;
+    private final int UP_CODE = 1;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -113,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#9E9E9E")));
-
 
         GridView gridView = (GridView) findViewById(R.id.gridview_movie);
 

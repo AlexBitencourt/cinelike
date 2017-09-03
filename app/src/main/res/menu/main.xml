@@ -16,10 +16,4 @@
         android:title="@string/action_favorite"
         app:showAsAction="collapseActionView" />
 
-    <item
-        android:id="@+id/action_popular"
-        android:orderInCategory="3"
-        android:title="@string/action_popular"
-        app:showAsAction="collapseActionView" />
-
 </menu>

@@ -19,9 +19,7 @@ import com.example.android.cineliketrailer.model.MovieDetails;
  */
 public class MovieDbHelper extends SQLiteOpenHelper {
 
-
     private static final String LOG_TAG = MovieDbHelper.class.getSimpleName();
-
 
     /*
      * Incrementamos a versão a cada alteração no esquema do DB.

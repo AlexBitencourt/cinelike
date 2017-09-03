@@ -30,7 +30,6 @@ public class TrailerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     final String YOUTUBE_BASE = "https://www.youtube.com/watch?v=";
 
     private final int VIEW_TYPE_TRAILERS = 0;
-
     private List<MovieTrailer> trailers;
     private Context context;
 

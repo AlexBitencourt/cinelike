@@ -8,7 +8,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -21,9 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import android.widget.Toast;
 
 import com.example.android.cineliketrailer.adapter.ReviewAdapter;
 import com.example.android.cineliketrailer.adapter.TrailerAdapter;
@@ -53,18 +50,18 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     private static final String LOG_TAG = DetailActivity.class.getSimpleName();
 
     CustomMovieAdapter customMovieAdapter;
-    TrailerAdapter trailerAdapter;
-    ReviewAdapter reviewAdapter;
-    RecyclerView mRecyclerTrailers;
-    RecyclerView mRecyclerReviews;
+    private TrailerAdapter trailerAdapter;
+    private ReviewAdapter reviewAdapter;
+    private RecyclerView mRecyclerTrailers;
+    private RecyclerView mRecyclerReviews;
     private String mMovieStr;
     private FloatingActionButton mFab;
     Long movieId;
-    MovieDetails currentMovie;
+    private MovieDetails currentMovie;
 
-    boolean isFavorite = false;
-    boolean statusDelete = false;
-    boolean statusSave = false;
+    private boolean isFavorite = false;
+    private boolean statusDelete = false;
+    private boolean statusSave = false;
 
     ArrayList<MovieTrailer> movieTrailer = new ArrayList<>();
     ArrayList<MovieReview> movieReviews = new ArrayList<>();
@@ -342,7 +339,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         }
     }
 
-
     private void deleteFavorite() {
         Uri uri = MovieContract.FavoriteEntry.CONTENT_URI;
         int currentMovieId = Integer.valueOf(currentMovie.getId());
@@ -355,5 +351,4 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         }
         finish();
     }
-
 }

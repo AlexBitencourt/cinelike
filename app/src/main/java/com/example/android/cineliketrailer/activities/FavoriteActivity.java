@@ -32,7 +32,7 @@ public class FavoriteActivity extends AppCompatActivity implements android.suppo
     private static final String LOG_TAG = FavoriteActivity.class.getName();
 
     private FavoriteAdapter favoriteAdapter;
-    List<MovieDetails> movieDetails = new ArrayList<>();
+    private List<MovieDetails> movieDetails = new ArrayList<>();
     private static final int FAVORITE_LOADER = 2;
     private TextView mEmptyStateTextView;
 
