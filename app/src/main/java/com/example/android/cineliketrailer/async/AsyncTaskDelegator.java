@@ -2,9 +2,8 @@ package com.example.android.cineliketrailer.async;
 
 
 /**
- * Created by dhiegoabrantes on 25/05/17.
+ * Created by alexbitencourt on 10/07/17.
  */
-
 public interface AsyncTaskDelegator {
     void processFinish(Object output);
 }

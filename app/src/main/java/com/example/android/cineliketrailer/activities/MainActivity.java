@@ -21,20 +21,20 @@ import android.widget.Toast;
 
 import com.example.android.cineliketrailer.model.MovieDetails;
 import com.example.android.cineliketrailer.R;
-import com.example.android.cineliketrailer.SettingsActivity;
 import com.example.android.cineliketrailer.adapter.CustomMovieAdapter;
 import com.example.android.cineliketrailer.async.AsyncTaskDelegator;
 import com.example.android.cineliketrailer.async.FetchMovieTask;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AsyncTaskDelegator, SharedPreferences.OnSharedPreferenceChangeListener {
+public class MainActivity extends AppCompatActivity implements AsyncTaskDelegator {
 
     private TextView mEmptyStateTextView;
     private View loadingIndicator;
 
     private CustomMovieAdapter customMovieAdapter;
     private ArrayList<MovieDetails> movieDetalsArrayList = new ArrayList<>();
+    private String movies_order = "popular";
 
     private final int UP_CODE = 1;
 
@@ -53,16 +53,16 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
         int id = item.getItemId();
 
         // noinspection SimplifiableIfStatement
-        if (id == R.id.action_refresh) {
+        if (id == R.id.ordem_mais_popular) {
+            movies_order = getString(R.string.order_option_popular);
+            updateMovies(movies_order);
             return true;
         }
-
-        if (id == R.id.action_settings) {
-            startActivityForResult(new Intent(this, SettingsActivity.class), UP_CODE);
-            return true;
+        if (id == R.id.ordem_mais_votados) {
+            movies_order = getString(R.string.order_option_toprated);
+            updateMovies(movies_order);
         }
-
-        if (id == R.id.action_favorites) {
+        if (id == R.id.ordem_favoritos) {
             startActivityForResult(new Intent(this, FavoriteActivity.class), UP_CODE);
             return true;
         }
@@ -72,26 +72,14 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
 
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-        String sort = sharedPreferences.getString(getString(R.string.pref_moviekey),
-                getString(R.string.pref_popular));
-        updateMovies(sort);
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String sort = prefs.getString(getString(R.string.pref_moviekey),
-                getString(R.string.pref_popular));
-        updateMovies(sort);
+        updateMovies(movies_order);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     private void updateMovies(String order) {

@@ -5,15 +5,26 @@
     tools:context=".activities.MainActivity">
 
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_ordem_preto_24dp"
+        android:title="@string/option_order"
+        app:showAsAction="ifRoom">
+        <menu>
+            <group
+                android:id="@+id/menu_sort_by"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/ordem_mais_popular"
+                    android:checked="true"
+                    android:title="@string/action_popular" />
+                <item
+                    android:id="@+id/ordem_mais_votados"
+                    android:title="@string/action_toprated" />
 
-    <item
-        android:id="@+id/action_favorites"
-        android:orderInCategory="3"
-        android:title="@string/action_favorite"
-        app:showAsAction="collapseActionView" />
+                <item
+                    android:id="@+id/ordem_favoritos"
+                    android:title="@string/action_favorite" />
+            </group>
+        </menu>
+    </item>
 
 </menu>

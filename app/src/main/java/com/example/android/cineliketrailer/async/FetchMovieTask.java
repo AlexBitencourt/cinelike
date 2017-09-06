@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Created by dhiegoabrantes on 25/05/17.
+ * Created by alexbitencourt on 10/07/17.
  */
 
 public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<MovieDetails>> {

@@ -9,14 +9,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +25,6 @@ import com.example.android.cineliketrailer.model.MovieDetails;
 import com.example.android.cineliketrailer.model.MovieReview;
 import com.example.android.cineliketrailer.model.MovieTrailer;
 import com.example.android.cineliketrailer.R;
-import com.example.android.cineliketrailer.SettingsActivity;
 import com.example.android.cineliketrailer.adapter.CustomMovieAdapter;
 import com.example.android.cineliketrailer.async.AsyncTaskDelegatorReview;
 import com.example.android.cineliketrailer.async.AsyncTaskDelegatorTrailer;
@@ -230,13 +226,15 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         getTask.execute(id);
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail, menu);
         return true;
-    }
+    } */
 
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // O item da barra de ação do identificador clica aqui. A barra de ação
@@ -244,14 +242,14 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         // como você especifica uma atividade pai no AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.action_settings:
-                startActivity(new Intent(this, SettingsActivity.class));
+               startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    } */
 
 
     @Override
