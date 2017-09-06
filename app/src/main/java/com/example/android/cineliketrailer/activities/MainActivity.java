@@ -56,20 +56,22 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
         if (id == R.id.ordem_mais_popular) {
             movies_order = getString(R.string.order_option_popular);
             updateMovies(movies_order);
+            //item.setChecked(true);
             return true;
         }
         if (id == R.id.ordem_mais_votados) {
             movies_order = getString(R.string.order_option_toprated);
             updateMovies(movies_order);
+            //item.setChecked(true);
         }
         if (id == R.id.ordem_favoritos) {
             startActivityForResult(new Intent(this, FavoriteActivity.class), UP_CODE);
+            //item.setChecked(true);
             return true;
         }
-
+        item.setChecked(true);
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public void onResume() {
