@@ -2,12 +2,10 @@ package com.example.android.cineliketrailer.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -52,24 +50,24 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
         // como você especifica uma atividade pai no AndroidManifest.xml.
         int id = item.getItemId();
 
-        // noinspection SimplifiableIfStatement
         if (id == R.id.ordem_mais_popular) {
             movies_order = getString(R.string.order_option_popular);
             updateMovies(movies_order);
-            //item.setChecked(true);
+            item.setChecked(true);
             return true;
         }
         if (id == R.id.ordem_mais_votados) {
             movies_order = getString(R.string.order_option_toprated);
             updateMovies(movies_order);
-            //item.setChecked(true);
+            item.setChecked(true);
+            return true;
         }
         if (id == R.id.ordem_favoritos) {
             startActivityForResult(new Intent(this, FavoriteActivity.class), UP_CODE);
-            //item.setChecked(true);
+            item.setChecked(true);
             return true;
         }
-        item.setChecked(true);
+        //item.setChecked(true);
         return super.onOptionsItemSelected(item);
     }
 
