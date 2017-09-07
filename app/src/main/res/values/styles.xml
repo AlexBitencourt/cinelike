@@ -1,5 +1,6 @@
 <resources>
 
+<<<<<<< HEAD
     <style name="Theme.MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- colorPrimary is used for the default action bar background -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -12,6 +13,18 @@
         <!-- textColorPrimary usado para os textos padrões -->
         <item name="android:textColorPrimary">#FFFFFF</item>
 
+=======
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <!-- customize the color palette -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ColorHeaderBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+>>>>>>> github/master
     </style>
 
 </resources>
