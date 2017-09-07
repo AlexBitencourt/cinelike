@@ -144,4 +144,5 @@ public class  MainActivity extends AppCompatActivity implements AsyncTaskDelegat
         this.movieDetalsArrayList = (ArrayList<MovieDetails>) output;
         customMovieAdapter.updateData(this.movieDetalsArrayList);
     }
+
 }

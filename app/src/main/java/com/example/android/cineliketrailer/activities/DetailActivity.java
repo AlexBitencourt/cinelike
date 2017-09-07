@@ -9,11 +9,16 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,6 +59,8 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
     private FloatingActionButton mFab;
     Long movieId;
     private MovieDetails currentMovie;
+
+    private static final String MOVIE_SHARE_HASHTAG = " #CinelikeApp";
 
     private boolean isFavorite = false;
     private boolean statusDelete = false;
@@ -315,4 +322,40 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         }
         finish();
     }
+
+    /*
+     * Código para item de compartilhamento nas redes sociais, e-mails...
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflar o menu; Isso adiciona itens à barra de ação se estiver presente.
+        getMenuInflater().inflate(R.menu.detailfragment, menu);
+
+        // Recuperar o item do menu compartilhamento
+        MenuItem menuItem = menu.findItem(R.id.action_share);
+
+        // Obtenha o fornecedor e segure-o para definir / alterar a intenção de compartilhamento.
+        ShareActionProvider mShareActionProvider =
+                (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+
+        // Anexe uma intenção a este ShareActionProvider. Você pode atualizar isso a qualquer momento,
+        // como quando o usuário seleciona uma nova peça de dados que eles podem gostar de compartilhar.
+        if (mShareActionProvider != null ) {
+            mShareActionProvider.setShareIntent(createShareMovieIntent());
+        } else {
+            Log.d(LOG_TAG, "Share Action Provider is null?");
+        }
+        return true;
+    }
+
+    private Intent createShareMovieIntent() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        // Esta flag evita que o app te leve para outro app quando tiver que voltar para ele mais tarde.
+        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        // Imforma que vamos compartilhar texto simpples.
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, mMovieStr + MOVIE_SHARE_HASHTAG);
+        return shareIntent;
+    }
 }
+
