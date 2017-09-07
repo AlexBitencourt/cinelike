@@ -2,11 +2,8 @@ package com.example.android.cineliketrailer.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -25,7 +22,7 @@ import com.example.android.cineliketrailer.async.FetchMovieTask;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AsyncTaskDelegator {
+public class  MainActivity extends AppCompatActivity implements AsyncTaskDelegator {
 
     private TextView mEmptyStateTextView;
     private View loadingIndicator;

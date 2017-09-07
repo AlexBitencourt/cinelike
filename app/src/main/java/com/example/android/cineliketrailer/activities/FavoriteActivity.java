@@ -1,34 +1,20 @@
 package com.example.android.cineliketrailer.activities;
 
-import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.cineliketrailer.R;
 import com.example.android.cineliketrailer.adapter.FavoriteAdapter;
-import com.example.android.cineliketrailer.async.AsyncTaskDelegator;
-import com.example.android.cineliketrailer.async.FetchMovieTask;
 import com.example.android.cineliketrailer.data.MovieContract;
 import com.example.android.cineliketrailer.model.MovieDetails;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Unbinder;
 
 /**
  * Created by alexbitencourt on 09/08/17.

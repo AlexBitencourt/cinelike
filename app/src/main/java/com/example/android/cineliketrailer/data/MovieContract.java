@@ -14,7 +14,6 @@ public class MovieContract {
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
-
     public static final String PATH_MOVIES = "movies";
     public static final String PATH_FAVORITE = "favorites";
 
