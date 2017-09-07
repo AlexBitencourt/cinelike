@@ -6,11 +6,17 @@
     android:background="#FFFFFF"
     android:orientation="vertical">
 
-    <include layout="@layout/activity_toolbar" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@null"
+        android:elevation="1dp" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:id="@+id/list_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/backdrop_details"
@@ -30,7 +36,7 @@
             android:layout_marginTop="21dp"
             android:src="@drawable/ic_favorite_border_black_24dp"
             android:tint="#ffffff"
-            app:backgroundTint="@color/colorButtom" />
+            app:backgroundTint="@color/colorAccent" />
 
         <ImageView
             android:id="@+id/poster_details"

@@ -99,8 +99,12 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskDelegato
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#9E9E9E")));
+         /*
+         * Código para mudar a cor do toolbar
+         *
+         * ActionBar bar = getSupportActionBar();
+         * bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#BCAAA4")));
+         */
 
         GridView gridView = (GridView) findViewById(R.id.gridview_movie);
 

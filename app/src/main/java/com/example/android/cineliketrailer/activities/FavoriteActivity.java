@@ -64,9 +64,6 @@ public class FavoriteActivity extends AppCompatActivity implements android.suppo
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#9E9E9E")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         GridView gridView = (GridView) findViewById(R.id.gridview_movie);

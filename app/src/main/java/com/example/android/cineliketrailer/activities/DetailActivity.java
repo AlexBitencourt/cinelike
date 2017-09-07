@@ -6,6 +6,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -82,15 +83,7 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        /*
-         * Código para mudar a cor do toolbar
-         *
-         * ActionBar bar = getSupportActionBar();
-         * bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#BCAAA4")));
-         */
 
         Intent intent = this.getIntent();
         currentMovie = intent.getParcelableExtra(MovieDetails.EXTRA_MOVIE_DETAILS);
@@ -225,32 +218,6 @@ public class DetailActivity extends AppCompatActivity implements AsyncTaskDelega
         FetchReviewTask getTask = new FetchReviewTask(this);
         getTask.execute(id);
     }
-
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.detail, menu);
-        return true;
-    } */
-
-    /*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // O item da barra de ação do identificador clica aqui. A barra de ação
-        // lida automaticamente com cliques no botão Home / Up, por tanto tempo
-        // como você especifica uma atividade pai no AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-               startActivity(new Intent(this, SettingsActivity.class));
-                return true;
-            case R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    } */
-
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
