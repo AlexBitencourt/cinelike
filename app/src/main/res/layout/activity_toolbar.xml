@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/my_toolbar"
     android:layout_width="match_parent"
@@ -7,18 +6,7 @@
     android:background="?attr/colorPrimary"
     android:minHeight="?attr/actionBarSize"
     android:elevation="3dp" />
-=======
-<android.support.v7.widget.Toolbar
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/my_toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:elevation="1dp"
-    style="@style/ColorHeaderBar"
-    app:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
 
->>>>>>> github/master
 
 
 
